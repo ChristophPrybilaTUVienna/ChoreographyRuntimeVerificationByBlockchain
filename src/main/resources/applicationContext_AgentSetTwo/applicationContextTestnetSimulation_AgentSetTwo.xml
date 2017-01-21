@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Packages to scan for injection -->
+    <context:annotation-config/>
+    <context:component-scan
+            base-package="at.ac.tuwien.infosys.prybila.runtimeVerification"/>
+
+    <!-- Centralized agent data of all simulated companies -->
+    <bean id="agentStorage"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.core.sharedStorages.AgentStorage">
+        <constructor-arg index="0" ref="agents"/>
+    </bean>
+
+    <!-- Simulation agents, representing companies and potential choreography partners -->
+    <bean id="agents" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="simulationAgent_E"/>
+                <ref bean="simulationAgent_F"/>
+                <ref bean="simulationAgent_G"/>
+                <ref bean="simulationAgent_H"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="simulationAgent_E"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.SimulationAgent">
+        <constructor-arg index="0" ref="handoverManager_E"/>
+        <constructor-arg index="1" value="12005"/>
+    </bean>
+
+    <bean id="simulationAgent_F"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.SimulationAgent">
+        <constructor-arg index="0" ref="handoverManager_F"/>
+        <constructor-arg index="1" value="12006"/>
+    </bean>
+
+    <bean id="simulationAgent_G"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.SimulationAgent">
+        <constructor-arg index="0" ref="handoverManager_G"/>
+        <constructor-arg index="1" value="12007"/>
+    </bean>
+
+    <bean id="simulationAgent_H"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.SimulationAgent">
+        <constructor-arg index="0" ref="handoverManager_H"/>
+        <constructor-arg index="1" value="12008"/>
+    </bean>
+
+    <import resource="particalApplicationContextTestnetSimulation_WorkflowHandoverManagers_AgentSetTwo.xml"/>
+
+</beans>

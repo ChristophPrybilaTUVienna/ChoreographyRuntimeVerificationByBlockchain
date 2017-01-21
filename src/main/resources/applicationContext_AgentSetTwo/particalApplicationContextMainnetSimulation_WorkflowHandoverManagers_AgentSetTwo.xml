@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bitcoin workflow storages for all simulated companies -->
+
+    <bean id="handoverManager_E"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.WorkflowHandoverManager">
+        <constructor-arg index="0" value="org.bitcoin.production"/>
+        <constructor-arg index="1" value="./testfiles/simulation/svp_mainnet_company_E.store"/>
+        <constructor-arg index="2" value="./testfiles/simulation/svp_mainnet_company_E.wallet"/>
+        <constructor-arg index="3" value="./src/main/resources/mainnet_checkpoints_2016-05-14T12.54.27Z"/>
+        <constructor-arg index="4" value="./testfiles/simulation/svp_mainnet_company_E.handoverStore"/>
+        <constructor-arg index="5" value="false"/>
+        <property name="ownIdentityProvider" ref="ownIdentityProvider_E"/>
+    </bean>
+
+    <bean id="handoverManager_F"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.WorkflowHandoverManager">
+        <constructor-arg index="0" value="org.bitcoin.production"/>
+        <constructor-arg index="1" value="./testfiles/simulation/svp_mainnet_company_F.store"/>
+        <constructor-arg index="2" value="./testfiles/simulation/svp_mainnet_company_F.wallet"/>
+        <constructor-arg index="3" value="./src/main/resources/mainnet_checkpoints_2016-05-14T12.54.27Z"/>
+        <constructor-arg index="4" value="./testfiles/simulation/svp_mainnet_company_F.handoverStore"/>
+        <constructor-arg index="5" value="false"/>
+        <property name="ownIdentityProvider" ref="ownIdentityProvider_F"/>
+    </bean>
+
+    <bean id="handoverManager_G"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.WorkflowHandoverManager">
+        <constructor-arg index="0" value="org.bitcoin.production"/>
+        <constructor-arg index="1" value="./testfiles/simulation/svp_mainnet_company_G.store"/>
+        <constructor-arg index="2" value="./testfiles/simulation/svp_mainnet_company_G.wallet"/>
+        <constructor-arg index="3" value="./src/main/resources/mainnet_checkpoints_2016-05-14T12.54.27Z"/>
+        <constructor-arg index="4" value="./testfiles/simulation/svp_mainnet_company_G.handoverStore"/>
+        <constructor-arg index="5" value="false"/>
+        <property name="ownIdentityProvider" ref="ownIdentityProvider_G"/>
+    </bean>
+
+    <bean id="handoverManager_H"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.WorkflowHandoverManager">
+        <constructor-arg index="0" value="org.bitcoin.production"/>
+        <constructor-arg index="1" value="./testfiles/simulation/svp_mainnet_company_H.store"/>
+        <constructor-arg index="2" value="./testfiles/simulation/svp_mainnet_company_H.wallet"/>
+        <constructor-arg index="3" value="./src/main/resources/mainnet_checkpoints_2016-05-14T12.54.27Z"/>
+        <constructor-arg index="4" value="./testfiles/simulation/svp_mainnet_company_H.handoverStore"/>
+        <constructor-arg index="5" value="false"/>
+        <property name="ownIdentityProvider" ref="ownIdentityProvider_H"/>
+    </bean>
+
+    <import resource="particalApplicationContextSimulation_Identification_AgentSetTwo.xml"/>
+
+</beans>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Centralized identity data of all simulated companies -->
+    <bean id="identityStorage"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.core.sharedStorages.IdentityStorage">
+        <constructor-arg index="0" ref="identities"/>
+    </bean>
+
+    <bean id="identities" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="ownIdentityProvider_I"/>
+                <ref bean="ownIdentityProvider_J"/>
+                <ref bean="ownIdentityProvider_K"/>
+                <ref bean="ownIdentityProvider_L"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- Identity data for all simulated companies -->
+    <bean id="ownIdentityProvider_I"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.core.OwnIdentityProvider">
+        <constructor-arg index="0" value="Company_I"/>
+        <constructor-arg index="1" value="./testfiles/simulation/rsaKeys/Company_I_public.key"/>
+        <constructor-arg index="2" value="./testfiles/simulation/rsaKeys/Company_I_private.key"/>
+    </bean>
+
+    <bean id="ownIdentityProvider_J"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.core.OwnIdentityProvider">
+        <constructor-arg index="0" value="Company_J"/>
+        <constructor-arg index="1" value="./testfiles/simulation/rsaKeys/Company_J_public.key"/>
+        <constructor-arg index="2" value="./testfiles/simulation/rsaKeys/Company_J_private.key"/>
+    </bean>
+
+    <bean id="ownIdentityProvider_K"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.core.OwnIdentityProvider">
+        <constructor-arg index="0" value="Company_K"/>
+        <constructor-arg index="1" value="./testfiles/simulation/rsaKeys/Company_K_public.key"/>
+        <constructor-arg index="2" value="./testfiles/simulation/rsaKeys/Company_K_private.key"/>
+    </bean>
+
+    <bean id="ownIdentityProvider_L"
+          class="at.ac.tuwien.infosys.prybila.runtimeVerification.handoverFramework.core.OwnIdentityProvider">
+        <constructor-arg index="0" value="Company_L"/>
+        <constructor-arg index="1" value="./testfiles/simulation/rsaKeys/Company_L_public.key"/>
+        <constructor-arg index="2" value="./testfiles/simulation/rsaKeys/Company_L_private.key"/>
+    </bean>
+
+</beans>
