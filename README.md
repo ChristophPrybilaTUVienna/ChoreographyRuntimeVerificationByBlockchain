@@ -132,14 +132,16 @@ the method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.pre
 7. When something during the simulation fails it may happen that funds get stuck in P2SH outputs of process transactions.
 In this case the funds can be rescued with the following method 
 _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.RescueFunds{X}.rescueMoneyFromP2SHOutputWithoutDataHash()_
-The method requires the following information. 
-- The txHash of the corresponding transaction.
-- The used private key (can be retrieved from the graphstorage of the WorkflowHandoverManager)
-- The index of the sending wallet (if unsure, just try different combinations)
-- The index of the wallet the rescued funds should be sent to
 
-For some scenarios also a datahash is required in the redeem script. 
-In these cases, retrieve the datahash from the graphstorage and use the alternative variant 
-of the BitcoinConnectionWithTestMethods.createRedeemScript() method.
+    The method requires the following information. 
+    
+    - The txHash of the corresponding transaction.
+    - The used private key (can be retrieved from the graphstorage of the WorkflowHandoverManager)
+    - The index of the sending wallet (if unsure, just try different combinations)
+    - The index of the wallet the rescued funds should be sent to
+
+    For some scenarios also a datahash is required in the redeem script. 
+    In these cases, retrieve the datahash from the graphstorage and use the alternative variant 
+    of the BitcoinConnectionWithTestMethods.createRedeemScript() method.
 
 
