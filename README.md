@@ -108,18 +108,20 @@ After the initial creation, the wallets are uptodate and synchronize much faster
 5. The simulation can now be started through the class _at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.Simulator_.
 Please note that the simulation only stops after a choreography was enacted. 
 A choreography is considered done when all its published transactions have reached a confirmation depth of 1.
-Therefore, simulations can take a long time. A simulation expects the following parameters.
+Therefore, simulations can take a long time. 
 
-- **testNumber** - Arbitrary number to be listed in the logfiles.
-- **BP_Name** - Business process to enact (see directory _BusinessProcessModels_ for possible BPs)
-- **Variant** - Variant number. Some BPs have different variants (different XOR paths). If unsure, just use '1'.
-- **Corrupt** - True/False flag if a fault should be included in the BP. Tests if the runtime verification framework recognizes the incorrect behaviour.
-- **Seed** - Seed for the random number generators.
-- **UsingRuntimeVerification** -  True/False flag if runtime verification should be employed.
-- **ImmediatelyWaitForConfirmation** -  True/False flag if the greedy mode (false) should be employed.
-- **AgentSet** -  Name of the AgentSet (ApplicationContext [AgentSetOne|AgentSetTwo|AgentSetThree]) that should be used to load the company definitions.
-- **netToUse** -  Name of the network to be used [testnet|mainnet]
-- **agentWithMoney** -  Index of the agent that has enough funds to start the choreography.
+    A simulation expects the following parameters.
+
+    - **testNumber** - Arbitrary number to be listed in the logfiles.
+    - **BP_Name** - Business process to enact (see directory _BusinessProcessModels_ for possible BPs)
+    - **Variant** - Variant number. Some BPs have different variants (different XOR paths). If unsure, just use '1'.
+    - **Corrupt** - True/False flag if a fault should be included in the BP. Tests if the runtime verification framework recognizes the incorrect behaviour.
+    - **Seed** - Seed for the random number generators.
+    - **UsingRuntimeVerification** -  True/False flag if runtime verification should be employed.
+    - **ImmediatelyWaitForConfirmation** -  True/False flag if the greedy mode (false) should be employed.
+    - **AgentSet** -  Name of the AgentSet (ApplicationContext [AgentSetOne|AgentSetTwo|AgentSetThree]) that should be used to load the company definitions.
+    - **netToUse** -  Name of the network to be used [testnet|mainnet]
+    - **agentWithMoney** -  Index of the agent that has enough funds to start the choreography.
 
 6. After the simulation a handover-storage file was created for each company. 
 Process instances with duplicate ids are not accepted. 
