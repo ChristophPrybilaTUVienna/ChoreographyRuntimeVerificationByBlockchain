@@ -52,8 +52,10 @@ The created custom BPM logic is by no means comparable to a professional BPM.
 Business processes are defined directly in the software instead of BPMN process models.
 
 ##Getting the Simulation to run
-    **DISCLAIMER:** To run the simulation on the Bitcoin mainnet, real Bitcoin funds are required to fuel the transactions. 
-    Loosing the required data to access bitcoins (e.g. private keys, additional locking information employed by the framework.) can render funds permanently inaccessible.
+**DISCLAIMER:**
+
+    To run the simulation on the Bitcoin mainnet, real Bitcoin funds are required to fuel the transactions. 
+    Losing the required data to access bitcoins (e.g. private keys, additional locking information employed by the framework.) can render funds permanently inaccessible.
     The presented framework is still in a prototype state, we take no responsebility for lost funds.
 
 A choreography-oriented interaction between four different companies is simulated.
@@ -83,16 +85,16 @@ Therefore, each company requires a RSA-Keypair.
 The keys for all agents can be generated through the method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.GenerateRSAKeyFiles.generateKeyPairsForSimulation()_.
 The generated keys must be stored in <PROJECT_DIR>testfiles/simulation/rsaKeys
 
-The following steps prepare the required wallets. These wallets can be generated for the Bitcoin _testnet_ or _mainnet_.
-Therefore, all state names that include a '{X}' are available in both variants. 
-Note that as usual for testnet tests, a local bitcoin node that operates in testnet mode is required. 
-Wallets that operate on the mainnet do not require such a local node. They synchronize directly with the network.
+    The following steps prepare the required wallets. These wallets can be generated for the Bitcoin _testnet_ or _mainnet_.
+    Therefore, all state names that include a '{X}' are available in both variants. 
+    Note that as usual for testnet tests, a local bitcoin node that operates in testnet mode is required. 
+    Wallets that operate on the mainnet do not require such a local node. They synchronize directly with the network.
 
-The bitcoinJ framework was never intended to load multiple wallets at the same time.
-Loading more than four wallets into one JVM at once causes the wallet-synchronization process to fail.
-That is why each agentset only contains four agents. 
-The class _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.AbstractIterativeContextLoader_ 
-helps to perform preparation tasks on all wallets.
+    The bitcoinJ framework was never intended to load multiple wallets at the same time.
+    Loading more than four wallets into one JVM at once causes the wallet-synchronization process to fail.
+    That is why each agentset only contains four agents. 
+    The class _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.AbstractIterativeContextLoader_ 
+    helps to perform preparation tasks on all wallets.
 
 3. The method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.PrintAllBalances{X}.iterateOverAllWalletsWithAction()_ 
 prints the balance for each agent-wallet and a bitcoin address that can be used to send funds to the given wallet.
@@ -106,9 +108,7 @@ After the initial creation, the wallets are uptodate and synchronize much faster
 5. The simulation can now be started through the class _at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.Simulator_.
 Please note that the simulation only stops after a choreography was enacted. 
 A choreography is considered done when all its published transactions have reached a confirmation depth of 1.
-Therefore, simulations can take a long time. 
-
-A simulation expects the following parameters.
+Therefore, simulations can take a long time. A simulation expects the following parameters.
 
 - **testNumber** - Arbitrary number to be listed in the logfiles.
 - **BP_Name** - Business process to enact (see directory _BusinessProcessModels_ for possible BPs)
