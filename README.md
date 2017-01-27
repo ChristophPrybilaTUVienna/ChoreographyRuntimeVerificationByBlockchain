@@ -2,10 +2,10 @@
 
 Scientific research on the topic of runtime verification for business process choreographies is conducted at the [Distributed Systems Group](http://www.infosys.tuwien.ac.at/) at TU Vienna. 
 During the course of this research, a prototype framework was created which utilizes the Bitcoin Blockchain as independent shared trust basis.
-Furthermore, this prototype is tested in a simulation. 
+Furthermore, this prototype was tested in an evaluation. 
 
-The underlying proposed concept can be found in the published [paper](TODO_INSERTLINK). 
-Further details about the concept and the prototype can be found in the one of the authors [master thesis](TODO_INSERTLINK).
+<!--The underlying proposed concept can be found in the published [paper](TODO_INSERTLINK). 
+Further details about the concept and the prototype can be found in [master thesis](TODO_INSERTLINK).--->
 
 The sources of the created prototype and the simulation can be found in this repository.
 
@@ -15,7 +15,7 @@ The prototype itself was developed by using the following technologies and frame
 - Spring Beans 4.2.6 
 - Apache HttpClient 4.5.2
 - Google Gson 2.7 
-- Most importantly [bitcoinj](https://bitcoinj.github.io/) 0.14.2 
+- [bitcoinj](https://bitcoinj.github.io/) 0.14.2 
 
 The [bitcoinj](https://bitcoinj.github.io/) framework provides basic management functions to operate a
 SPV Bitcoin wallet. 
@@ -30,7 +30,7 @@ The REST API employed in the simulation is [blockcypher](https://api.blockcypher
 The project is structured through the following packages:
 
 - **at.ac.tuwien.infosys.prybila.runtimeVerification.bitcoin.core** - 
-This package includes the core features required to support the runtime verification concept. These are amongst other things, Transaction building, broadcasting and wallet management. 
+This package includes the core features required to support the runtime verification concept. These are amongst other things, transaction building, broadcasting and wallet management. 
 The features of the package can be accessed through the class at.ac.tuwien.infosys.prybila.runtimeVerification.bitcoin.BitcoinConnection.
 
 - **at.ac.tuwien.infosys.prybila.runtimeVerification.bitcoin.crawler** - 
@@ -45,34 +45,33 @@ The features can be accessed through the class at.ac.tuwien.infosys.prybila.runt
 - **at.ac.tuwien.infosys.prybila.runtimeVerification.simulation** -
 This package contains the logic of the simulation. 
 It contains a very simple custom business process management (BPM) logic that enables the routing of business processes.
-Each simulated company uses this logic to participate in the choreography. 
+Each process participant uses this logic to participate in the choreography. 
 The runtime verification framework is included in this BPM logic.
-Please note, that the focus of this prototype lies on the runtime verification of choreographies.
-The created custom BPM logic is by no means comparable to a professional BPM.
+Please note that the focus of this prototype lies on the runtime verification of choreographies, further BPM aspects are only implemented to support this.
 Business processes are defined directly in the software instead of BPMN process models.
 
 ##Getting the Simulation to run
 **DISCLAIMER:**
 
     To run the simulation on the Bitcoin mainnet, real Bitcoin funds are required to fuel the transactions. 
-    Losing the required data to access bitcoins (e.g. private keys, additional locking information employed by the framework.) can render funds permanently inaccessible.
-    The presented framework is still in a prototype state, we take no responsebility for lost funds.
+    Losing the required data to access bitcoins (e.g., private keys, additional locking information employed by the framework) can render funds permanently inaccessible.
+    The presented framework is still in a prototype state, i.e., we take no responsibility for lost funds.
 
-A choreography-oriented interaction between four different companies is simulated.
-Between these companies a single process is enacted.
+A choreography-oriented interaction between four different process participants is simulated.
+Between these participants a single process is enacted.
 During the enactment the described runtime verification prototype is used. 
 
-In the simulation package, companies are referred to as SimulationAgents. 
+In the simulation package, process participants are referred to as SimulationAgents. 
 Sets of agents are configured as Spring beans. 
-This way, each simulation only requires a reference to the given Spring applicationContext in order to know which agentset to use.
+This way, each simulation only requires a reference to the given Spring applicationContext in order to know which agent set to use.
 
-Each company operates its own isolated WorkflowHandoverManager. 
+Each process participant operates its own isolated WorkflowHandoverManager. 
 This class monitors and stores the recorded runtime verification activities for the enacted process. 
-Furthermore it enables the companies to participate in the runtime verification activities. 
+Furthermore, it enables the companies to participate in the runtime verification activities. 
 Received handovers are verified and confirmed, own process steps are recorded and published.
 
 A number of preparations have to be done in order to run the simulation. 
-Helperfunctions (provided in the form of Junit test), help with this preparations.
+Helper functions (provided in the form of JInit test), help with these preparations:
 
 0. Create the directory <PROJECT_DIR>testfiles/simulation/rsaKeys
 
@@ -80,8 +79,8 @@ Helperfunctions (provided in the form of Junit test), help with this preparation
 This token identifies the given payment plan. Blockcypher also offers a free payment plan.
 This token has to be configured in _crawler.properties_.
 
-2. The concept also relies on PKI encryption functions. 
-Therefore, each company requires a RSA-Keypair. 
+2. The approach also relies on PKI encryption functions. 
+Therefore, each process participant requires a RSA-Keypair. 
 The keys for all agents can be generated through the method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.GenerateRSAKeyFiles.generateKeyPairsForSimulation()_.
 The generated keys must be stored in <PROJECT_DIR>testfiles/simulation/rsaKeys
 
@@ -92,7 +91,7 @@ The generated keys must be stored in <PROJECT_DIR>testfiles/simulation/rsaKeys
 
     The bitcoinJ framework was never intended to load multiple wallets at the same time.
     Loading more than four wallets into one JVM at once causes the wallet-synchronization process to fail.
-    That is why each agentset only contains four agents. 
+    That is why each agent set only contains four agents. 
     The class _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.AbstractIterativeContextLoader_ 
     helps to perform preparation tasks on all wallets.
 
@@ -100,10 +99,10 @@ The generated keys must be stored in <PROJECT_DIR>testfiles/simulation/rsaKeys
 prints the balance for each agent-wallet and a bitcoin address that can be used to send funds to the given wallet.
 This methods should be run at least once before the simulation because it initially creates the wallets.
 Upon creation, each wallet synchronizes with the network. 
-Even though this process is done in the limited SPV fashion and supported by a checkpoint file it might take some minutes until all wallets are created.
-After the initial creation, the wallets are uptodate and synchronize much faster when loaded during the simulation.
+Even though this process is done in the limited SPV fashion and supported by a checkpoint file, it might take some minutes until all wallets are created.
+After the initial creation, the wallets are up-to-date and synchronize much faster when loaded during the simulation.
 
-4. For the simulation at least one wallet must contain funds. It is the wallet of the agent that initially starts the choreography enactment (i.e. creates the verification token).
+4. For the simulation runs, at least one wallet must contain funds. It is the wallet of the agent that initially starts the choreography enactment (i.e., creates the verification token).
 
 5. The simulation can now be started through the class _at.ac.tuwien.infosys.prybila.runtimeVerification.simulation.Simulator_.
 Please note that the simulation only stops after a choreography was enacted. 
@@ -113,35 +112,34 @@ Therefore, simulations can take a long time.
     A simulation expects the following parameters.
 
     - **testNumber** - Arbitrary number to be listed in the logfiles.
-    - **BP_Name** - Business process to enact (see directory _BusinessProcessModels_ for possible BPs)
-    - **Variant** - Variant number. Some BPs have different variants (different XOR paths). If unsure, just use '1'.
+    - **BP_Name** - Business process to enact (see directory _BusinessProcessModels_ for possible BPs).
+    - **Variant** - Variant number. Some BPs have different variants (i.e., different XOR paths). If unsure, just use '1'.
     - **Corrupt** - True/False flag if a fault should be included in the BP. Tests if the runtime verification framework recognizes the incorrect behaviour.
     - **Seed** - Seed for the random number generators.
     - **UsingRuntimeVerification** -  True/False flag if runtime verification should be employed.
     - **ImmediatelyWaitForConfirmation** -  True/False flag if the greedy mode (false) should be employed.
     - **AgentSet** -  Name of the AgentSet (ApplicationContext [AgentSetOne|AgentSetTwo|AgentSetThree]) that should be used to load the company definitions.
-    - **netToUse** -  Name of the network to be used [testnet|mainnet]
+    - **netToUse** -  Name of the network to be used [testnet|mainnet].
     - **agentWithMoney** -  Index of the agent that has enough funds to start the choreography.
 
-6. After the simulation a handover-storage file was created for each company. 
+6. After the simulation, a handover-storage file was created for each company. 
 Process instances with duplicate ids are not accepted. 
 That is why it might become necessary to delete those handover-storage files.
 This can be done automatically through 
 the method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.DeleteHandoverStorageFiles{X}.deleteAllHandoverStorageFiles()_
 
-7. When something during the simulation fails it may happen that funds get stuck in P2SH outputs of process transactions.
+7. When something during the simulation fails, it may happen that funds get stuck in P2SH outputs of process transactions.
 In this case the funds can be rescued with the following method 
 _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.RescueFunds{X}.rescueMoneyFromP2SHOutputWithoutDataHash()_
 
     The method requires the following information. 
     
     - The txHash of the corresponding transaction.
-    - The used private key (can be retrieved from the graphstorage of the WorkflowHandoverManager)
-    - The index of the sending wallet (if unsure, just try different combinations)
-    - The index of the wallet the rescued funds should be sent to
+    - The used private key (can be retrieved from the graphstorage of the WorkflowHandoverManager).
+    - The index of the sending wallet (if unsure, just try different combinations).
+    - The index of the wallet the rescued funds should be sent to.
 
-    For some scenarios also a datahash is required in the redeem script. 
-    In these cases, retrieve the datahash from the graphstorage and use the alternative variant 
-    of the BitcoinConnectionWithTestMethods.createRedeemScript() method.
+    For some scenarios, also a datahash is required in the redeem script. 
+    In these cases, retrieve the datahash from the graphstorage and use the alternative variant of the BitcoinConnectionWithTestMethods.createRedeemScript() method.
 
 
