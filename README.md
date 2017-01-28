@@ -51,11 +51,6 @@ Please note that the focus of this prototype lies on the runtime verification of
 Business processes are defined directly in the software instead of BPMN process models.
 
 ##Getting the Simulation to run
-**DISCLAIMER:**
-
-    To run the simulation on the Bitcoin mainnet, real Bitcoin funds are required to fuel the transactions. 
-    Losing the required data to access bitcoins (e.g., private keys, additional locking information employed by the framework) can render funds permanently inaccessible.
-    The presented framework is still in a prototype state, i.e., we take no responsibility for lost funds.
 
 A choreography-oriented interaction between four different process participants is simulated.
 Between these participants a single process is enacted.
@@ -73,7 +68,7 @@ Received handovers are verified and confirmed, own process steps are recorded an
 A number of preparations have to be done in order to run the simulation. 
 Helper functions (provided in the form of JInit test), help with these preparations:
 
-0. Create the directory <PROJECT_DIR>testfiles/simulation/rsaKeys
+0. Create the directory PROJECT_DIR/testfiles/simulation/rsaKeys
 
 1. Most Bitcoin REST APIs require a token that has to be appended to each request. 
 This token identifies the given payment plan. Blockcypher also offers a free payment plan.
@@ -82,7 +77,7 @@ This token has to be configured in _crawler.properties_.
 2. The approach also relies on PKI encryption functions. 
 Therefore, each process participant requires a RSA-Keypair. 
 The keys for all agents can be generated through the method _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.GenerateRSAKeyFiles.generateKeyPairsForSimulation()_.
-The generated keys must be stored in <PROJECT_DIR>testfiles/simulation/rsaKeys
+The generated keys must be stored in PROJECT_DIR/testfiles/simulation/rsaKeys
 
     The following steps prepare the required wallets. These wallets can be generated for the Bitcoin _testnet_ or _mainnet_.
     Therefore, all state names that include a '{X}' are available in both variants. 
@@ -143,3 +138,20 @@ _at.ac.tuwien.infosys.prybila.runtimeVerification.test.simulation.preparation.Re
     In these cases, retrieve the datahash from the graphstorage and use the alternative variant of the BitcoinConnectionWithTestMethods.createRedeemScript() method.
 
 
+## DISCLAIMER
+To run the simulation on the Bitcoin mainnet, real Bitcoin funds are required to fuel the transactions. 
+Losing the required data to access bitcoins (e.g., private keys, additional locking information employed by the framework) can render funds permanently inaccessible.
+The presented framework is still in a prototype state, i.e., we take no responsibility for lost funds.
+
+This program is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**.
+
+## Project License
+This project is released under GNU General Public License Version 3.
+
+## Other Licenses
+The following software frameworks that have been utilized in this project are published under the  Apache License Version 2.0.
+
+- http://www.bitcoinj.org
+- http://graphstream-project.org
+- https://hc.apache.org/httpcomponents-core-ga/
+- https://github.com/google/gson
