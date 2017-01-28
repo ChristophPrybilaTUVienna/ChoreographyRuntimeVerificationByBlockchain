@@ -1,6 +1,6 @@
 #Runtime Verification for Business Processes utilizing the Blockchain
 
-Scientific research on the topic of runtime verification for business process choreographies is conducted at the [Distributed Systems Group](http://www.infosys.tuwien.ac.at/) at TU Vienna. 
+Scientific research on the topic of runtime verification for business process choreographies is conducted at the [Distributed Systems Group](http://www.infosys.tuwien.ac.at/) (DSG) at TU Vienna. 
 During the course of this research, a prototype framework was created which utilizes the Bitcoin Blockchain as independent shared trust basis.
 Furthermore, this prototype was tested in an evaluation. 
 
@@ -8,6 +8,8 @@ Furthermore, this prototype was tested in an evaluation.
 Further details about the concept and the prototype can be found in [master thesis](TODO_INSERTLINK).--->
 
 The sources of the created prototype and the simulation can be found in this repository.
+
+For further information about this specific project, please contact [Stefan Schulte](http://www.infosys.tuwien.ac.at/staff/sschulte/talks.html) from the DSG.
 
 The prototype itself was developed by using the following technologies and frameworks.
 - Java Development Kit (JDK) 1.8
@@ -153,5 +155,5 @@ The following software frameworks that have been utilized in this project are pu
 
 - http://www.bitcoinj.org
 - http://graphstream-project.org
-- https://hc.apache.org/httpcomponents-core-ga/
+- https://hc.apache.org/httpcomponents-core-ga
 - https://github.com/google/gson
