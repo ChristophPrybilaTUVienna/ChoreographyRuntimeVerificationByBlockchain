@@ -4,8 +4,8 @@ Scientific research on the topic of runtime verification for business process ch
 During the course of this research, a prototype framework was created which utilizes the Bitcoin Blockchain as independent shared trust basis.
 Furthermore, this prototype was tested in an evaluation. 
 
-<!--The underlying proposed concept can be found in the published [paper](TODO_INSERTLINK). 
-Further details about the concept and the prototype can be found in [master thesis](TODO_INSERTLINK).--->
+<!--The underlying proposed concept can be found in the published [paper](TODO_INSERTLINK). --->
+Further details about the concept and the prototype can be found in [master thesis](http://repositum.tuwien.ac.at/obvutwhs/download/pdf/1761635?originalFilename=true).
 
 The sources of the created prototype and the simulation can be found in this repository.
 
