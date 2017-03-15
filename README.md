@@ -1,11 +1,11 @@
-#Runtime Verification for Business Processes utilizing the Blockchain
+# Runtime Verification for Business Processes utilizing the Blockchain
 
 Scientific research on the topic of runtime verification for business process choreographies is conducted at the [Distributed Systems Group](http://www.infosys.tuwien.ac.at/) (DSG) at TU Vienna. 
 During the course of this research, a prototype framework was created which utilizes the Bitcoin Blockchain as independent shared trust basis.
 Furthermore, this prototype was tested in an evaluation. 
 
 <!--The underlying proposed concept can be found in the published [paper](TODO_INSERTLINK). --->
-Further details about the concept and the prototype can be found in [master thesis](http://repositum.tuwien.ac.at/obvutwhs/download/pdf/1761635?originalFilename=true).
+Further details about the concept and the prototype can be found in this [master thesis](http://repositum.tuwien.ac.at/obvutwhs/download/pdf/1761635?originalFilename=true).
 
 The sources of the created prototype and the simulation can be found in this repository.
 
@@ -52,7 +52,7 @@ The runtime verification framework is included in this BPM logic.
 Please note that the focus of this prototype lies on the runtime verification of choreographies, further BPM aspects are only implemented to support this.
 Business processes are defined directly in the software instead of BPMN process models.
 
-##Getting the Simulation to run
+## Getting the Simulation to run
 
 A choreography-oriented interaction between four different process participants is simulated.
 Between these participants a single process is enacted.
